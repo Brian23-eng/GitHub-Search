@@ -1,10 +1,18 @@
+import { Users } from './../Classes/users';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { HttpClient} from '@angular/common/http'
+import { environment } from '../../environments/environment'
+import { resolve } from 'dns';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserServiceService {
 
-  constructor() { }
+  user:Users
+  userUrl:'https://api.github.com/users/brian23-eng'
+
+  constructor(private http :HttpClient) { 
+    this.user = new Users
+ }
 }
