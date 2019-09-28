@@ -3,14 +3,17 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { ProfileService } from './Service/profile.service'
 
 import { NgProgressModule } from '@ngx-progressbar/core';
 import { NgProgressHttpClientModule } from '@ngx-progressbar/http-client';
+import { UserProfileComponent } from './Profile/user-profile/user-profile.component';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    UserProfileComponent
   ],
   imports: [
     BrowserModule,
@@ -18,7 +21,7 @@ import { NgProgressHttpClientModule } from '@ngx-progressbar/http-client';
     NgProgressModule.forRoot(),
     NgProgressHttpClientModule
   ],
-  providers: [],
+  providers: [ProfileService],
   bootstrap: [AppComponent],
   
 })
