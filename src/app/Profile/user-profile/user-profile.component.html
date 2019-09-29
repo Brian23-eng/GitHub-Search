@@ -1,66 +1,69 @@
-<div class="container">
+<div>
+    <h1>GitHub Search</h1>
     <div class="row">
-        <div class="col-md-4">
-        </div>
-
-        <br><br>
-        <div class="col-md-4">
-            <form>
-                <input type="text" name="username" placeholder="search username" id="search" [(ngModel)]="username"><br><br>
-                <button id="reset" class="btn btn-dark btn-lg" type="reset" name="button">Reset Search Value</button>
+        <div class="col-md-6">
+            <h3>Input Info</h3>
+            <form class="form-group">
+                <input type="search" class="form-control" placeholder="Input your username" [(ngModel)]="username" name="username">
                 <br><br>
+                <button class="btn btn-primary">Search</button>
             </form>
         </div>
 
-
-        <div class="col-md-4">
-
-        </div>
-    </div>
-</div>
-<hr>
-<hr>
-
-<div class="container-fluid">
-    <div appBackground class="results">
-        <div class="row">
-            <div class="col-sm-4" id="u-avatar">
-
-                <img src={{reponame.avatar}} class="img-fluid rounded-circle" alt="prof"><br><br>
-            </div>
-
-            <div class="col-sm-4" id="u-info">
-                <div class="card">
-                    <div class="card-title">
-                        <h1>User Info</h1>
-                    </div>
-                    <div class="card-body">
-
-                        <span class="btn btn-warning"> Username : <b>{{user.username}}</b></span><br><br>
-                        <span class="btn btn-info">{{reponame.followers}} followers</span><br><br>
-                        <span class="btn btn-info">{{reponame.following}} following</span><br><br>
-                        <span class="btn btn-info">{{reponame.reponame}} public repositories</span><br><br>
-                        <p><a href="{{reponame.html_url}}" class="btn btn-success" target="_blank">View Github Profile</a></p>
-                    </div>
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-head">
+                    <h3>Users Profile</h3>
                 </div>
 
-            </div>
-
-            <div class="col-sm-4" id="u-repos">
-                <div class="card">
-                    <div class="card-title">
-                        <h1>View Repositories Below</h1>
-                    </div>
-                    <div class="card-body">
-                        <div *ngFor="let repo of reponame.repos| slice:0:10">
-                            <p *ngIf="repo.language" class="list-group-item"><a class="btn btn-dark" href={ {repo.html_url}} target="_blank" id="repos">{{repo.name}}</a> : {{repo.language}}</p>
+                <div class="card-body">
+                    <div *ngIf="searchUsers">
+                        <div>
+                            <img src="{{user.avatar_url}}" alt="profile">
                         </div>
+                        <br>
+                        <div>
+                            <a href="{{user.html_url}}" target="_blank"><button class="btn btn-success">Go To Profile</button></a>
+                            <br>
+                        </div>
+
+                        <div>
+                            <div class="row">
+
+                                <h4>{{user.name}}</h4>
+                                <div class="col-sm-4">
+                                    <p class="btn btn-warning">Follwers:<br><span>{{user.followers}}</span></p>
+                                </div>
+                                <div class="col-sm-4">
+                                    <p class="btn btn-danger">Following:<br><span>{{user.following}}</span></p>
+                                </div>
+                                <div class="col-sm-4">
+                                    <p class="btn btn-info">Repositories:<br><span>{{user.public_repos}}</span></p>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
 
+                </div>
 
+                <div *ngIf="!searchUsers">
+                    <div class="container repo-row">
+                        <div *ngFor="let rep of repo" class="card">
+                            <a href="{{rep.html_url}}" target="_blank">
+                                <h3>{{rep.name}}</h3>
+                                <p>{{rep.description}}</p>
+                                <!-- <p>{{rep.created_at |dateCount}}</p> -->
+                            </a>
+
+                        </div>
+
+
+                    </div>
                 </div>
             </div>
         </div>
+
     </div>
 
 </div>

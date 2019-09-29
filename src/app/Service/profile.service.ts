@@ -20,9 +20,9 @@ export class ProfileService {
   constructor(private http:HttpClient) {
 
     // this.username = "brian23-eng";
-    this.user = new User("","","",0,0);
-
-    this.repo = new Repo('','','')
+    this.user = new User ('', '', '', '', 0, 0, 0);
+    this.repo = new Repo('', '', '');
+    this.userName = 'brian23-eng';
   }
 
   userInfo(){
@@ -36,17 +36,19 @@ export class ProfileService {
     }
 
     let promise = new Promise((resolve,reject)=>{
-      this.http.get<ApiResponse>(environment.apiUserUrl).toPromise().then(response =>{
-        this.user.username = response.login
-        this.user.avatar = response.avatar_url
-        this.user.html_url = response.html_url
-        this.user.followers = response.followers
-        this.user.following = response.following
+      this.http.get<ApiResponse>('https://api.github.com/users/' + this.userName + '?access_token='+ this.apiKey).toPromise().then(res =>{
+        this.user.login = res.login;
+        this.user.avatar_url = res.avatar_url;
+        this.user.html_url = res.html_url;
+        this.user.name = res.name;
+        this.user.followers = res.followers;
+        this.user.following = res.following;
+        this.user.public_repos = res.public_repos;
 
         resolve()
       }, error =>{
-        this.user.username = "User name cannot be found"
-        this.user.avatar = "Can't load image"
+        this.user.name = "User name cannot be found"
+        this.user.avatar_url= "Can't load image"
         this.user.html_url = "404 page not found"
         this.user.followers = 0
         this.user.following = 0
@@ -58,44 +60,30 @@ export class ProfileService {
     return promise
   }
 
-  apiRequest(j){
-    interface ApiResponse{
-      login: string;
-      public_repos: string;
-      avatar_url : any;
-      html_url: string;
-      following : 0;
-      followers : 0;
+  getRepos(username:any) {
 
+    interface ApiResponse {
+      name: string;
+      html_url: string;
+      description: string;
     }
 
-    var usernameInput = j
-    let promise = new Promise((resolve,reject)=>{
+    const promise = new Promise(((resolve, reject) => {
+      this.http.get<ApiResponse>('https://api.github.com/users/' + this.userName + '/repos?access_token=' + this.apiKey )
+        .toPromise()
+        .then(res => {
+          this.repo = res;
+    }, error => {
 
-      this.http.get<ApiResponse>(environment.apiUrl + usernameInput + environment.apiKey).toPromise().then(response=>{
-
-        this.user.username = response.login
-         this.user.avatar = response.avatar_url
-         this.user.html_url = response.html_url
-         this.user.followers = response.followers
-         this.user.following = response.following
-
-
-         resolve()
-      }, error =>{
-        this.user.username = "No such Username"
-       
-        this.user.avatar = "Can't load image"
-        this.user.html_url = "404 page not found"
-        this.user.followers = 0
-        this.user.following = 0
-
-        reject(error)
-      })
-    })
-
-    return promise
+      reject(error);
+    });
+  }));
+    return promise;
   }
+  getUsername(username:string){
+    this.userName = username;
+  }
+
   }
 
 
