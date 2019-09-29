@@ -4,7 +4,7 @@
         <div class="col-md-6">
             <h3>Input Info</h3>
             <form class="form-group">
-                <input type="search" class="form-control" placeholder="Input your username" [(ngModel)]="username" name="username">
+                <input type="search" class="form-control" placeholder="Input your username" [(ngModel)]="username" name="username" (keyup)="getProfile()">
                 <br><br>
                 <button class="btn btn-primary">Search</button>
             </form>
@@ -28,9 +28,10 @@
                         </div>
 
                         <div>
-                            <div class="row">
 
-                                <h4>{{user.name}}</h4>
+
+                            <h4>{{user.name}}</h4>
+                            <div class="row">
                                 <div class="col-sm-4">
                                     <p class="btn btn-warning">Follwers:<br><span>{{user.followers}}</span></p>
                                 </div>
