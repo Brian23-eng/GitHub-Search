@@ -4,8 +4,7 @@
 
 export const environment = {
   production: false,
-  apiUrl:"https://api.github.com/users/",
-  apiKey:'?access_token=2e6d05110123921c489045a006f5fc546767976c',
+  apiUserUrl:"https://api.github.com/users/brian23-eng?access_token=1744a1eb2a2c0fb3c3afba62d2f972826066c2c8",
 };
 
 /*

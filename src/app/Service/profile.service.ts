@@ -1,3 +1,4 @@
+import { logging } from 'protractor';
 import { Injectable } from '@angular/core';
 import { HttpClient} from '@angular/common/http';
 
@@ -28,6 +29,20 @@ export class ProfileService {
       following : number;
       followers : number;
     }
+
+    let promise = new Promise((resolve,reject)=>{
+      this.http.get<ApiResponse>(environment.apiUserUrl).toPromise().then(response =>{
+        this.user.username = response.login
+        this.user.avatar = response.avatar_url
+        this.user.html_url = response.html_url
+        this.user.followers = response.followers
+        this.user.following = response.following
+
+        resolve()
+      })
+        
+    
+    })
   }
   }
 
