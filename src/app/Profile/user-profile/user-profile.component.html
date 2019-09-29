@@ -1,42 +1,66 @@
-<h1>Github Search</h1>
-
-<div class="row">
-    <div class="col-md-4">
-        <form class="form-group">
-            <input type="search" name="username" placeholder="Input username" class="form-control" id="search" [(ngModel)]="username">
-            <br><br>
-            <button id="reset" class="btn btn-primary">Search</button>
-
-        </form>
-
-    </div>
-
-    <div class="col-md-4" id="avatar">
-        <img src="{{user.avatar}}" alt="profile" class="img-fluid rounded-cirlce">
-        <br><br>
-
-    </div>
-
-    <div class="col-sm-4" id="info">
-        <div class="card">
-            <div class="card-title">
-                <h2>Profile Info</h2>
-            </div>
-            <div class="card-body">
-                <span class="btn btn-warning">
-                    Username : <b>{{user.username}}</b>
-                </span>
-                <br><br>
-                <span class="btn btn-success">{{user.followers}}</span>
-                <br><br>
-                <span class="btn btn-info">{{user.following}}</span>
-                <br><br>
-                <span></span>
-
-            </div>
-
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
         </div>
 
+        <br><br>
+        <div class="col-md-4">
+            <form>
+                <input type="text" name="username" placeholder="search username" id="search" [(ngModel)]="username"><br><br>
+                <button id="reset" class="btn btn-dark btn-lg" type="reset" name="button">Reset Search Value</button>
+                <br><br>
+            </form>
+        </div>
+
+
+        <div class="col-md-4">
+
+        </div>
+    </div>
+</div>
+<hr>
+<hr>
+
+<div class="container-fluid">
+    <div appBackground class="results">
+        <div class="row">
+            <div class="col-sm-4" id="u-avatar">
+
+                <img src={{reponame.avatar}} class="img-fluid rounded-circle" alt="prof"><br><br>
+            </div>
+
+            <div class="col-sm-4" id="u-info">
+                <div class="card">
+                    <div class="card-title">
+                        <h1>User Info</h1>
+                    </div>
+                    <div class="card-body">
+
+                        <span class="btn btn-warning"> Username : <b>{{user.username}}</b></span><br><br>
+                        <span class="btn btn-info">{{reponame.followers}} followers</span><br><br>
+                        <span class="btn btn-info">{{reponame.following}} following</span><br><br>
+                        <span class="btn btn-info">{{reponame.reponame}} public repositories</span><br><br>
+                        <p><a href="{{reponame.html_url}}" class="btn btn-success" target="_blank">View Github Profile</a></p>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="col-sm-4" id="u-repos">
+                <div class="card">
+                    <div class="card-title">
+                        <h1>View Repositories Below</h1>
+                    </div>
+                    <div class="card-body">
+                        <div *ngFor="let repo of reponame.repos| slice:0:10">
+                            <p *ngIf="repo.language" class="list-group-item"><a class="btn btn-dark" href={ {repo.html_url}} target="_blank" id="repos">{{repo.name}}</a> : {{repo.language}}</p>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
     </div>
 
 </div>
