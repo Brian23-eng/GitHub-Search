@@ -20,12 +20,13 @@ export class ProfileService {
 
   constructor(private http:HttpClient) {
 
-    // this.username = "brian23-eng";
+
     this.user = new User ('', '', '', '', 0, 0, 0);
     this.repo = new Repo('', '', '');
     this.userName = 'brian23-eng';
   }
 
+  // getting profile info including the username, followers and following and the profile picture
   userInfo(){
     interface ApiResponse{
       login: string;
@@ -62,7 +63,9 @@ export class ProfileService {
     return promise
   }
 
-  getRepos(username:any) {
+  // getting repo info
+
+  getRepos() {
 
     interface ApiResponse {
       name: string;
