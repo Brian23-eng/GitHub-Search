@@ -5,10 +5,12 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ProfileService } from './Service/profile.service'
+import { FormsModule } from '@angular/forms'
 
 import { NgProgressModule } from '@ngx-progressbar/core';
 import { NgProgressHttpClientModule } from '@ngx-progressbar/http-client';
 import { UserProfileComponent } from './Profile/user-profile/user-profile.component';
+import { from } from 'rxjs';
 
 
 @NgModule({
@@ -21,7 +23,8 @@ import { UserProfileComponent } from './Profile/user-profile/user-profile.compon
     AppRoutingModule,
     NgProgressModule.forRoot(),
     NgProgressHttpClientModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [ProfileService],
   bootstrap: [AppComponent],

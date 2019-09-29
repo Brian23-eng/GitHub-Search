@@ -3,11 +3,39 @@
 <div class="row">
     <div class="col-md-4">
         <form class="form-group">
-            <input type="search" name="username" placeholder="Input username" class="form-control">
+            <input type="search" name="username" placeholder="Input username" class="form-control" id="search" [(ngModel)]="username">
             <br><br>
             <button id="reset" class="btn btn-primary">Search</button>
 
         </form>
+
+    </div>
+
+    <div class="col-md-4" id="avatar">
+        <img src="{{user.avatar}}" alt="profile" class="img-fluid rounded-cirlce">
+        <br><br>
+
+    </div>
+
+    <div class="col-sm-4" id="info">
+        <div class="card">
+            <div class="card-title">
+                <h2>Profile Info</h2>
+            </div>
+            <div class="card-body">
+                <span class="btn btn-warning">
+                    Username : <b>{{user.username}}</b>
+                </span>
+                <br><br>
+                <span class="btn btn-success">{{user.followers}}</span>
+                <br><br>
+                <span class="btn btn-info">{{user.following}}</span>
+                <br><br>
+                <span></span>
+
+            </div>
+
+        </div>
 
     </div>
 

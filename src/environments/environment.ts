@@ -6,7 +6,7 @@ export const environment = {
   production: false,
   apiUrl:"https://api.github.com/users/",
   apiKey:'?access_token=1744a1eb2a2c0fb3c3afba62d2f972826066c2c8',
-  apiUserUrl:"https://api.github.com/users/brian23-eng?access_token=1744a1eb2a2c0fb3c3afba62d2f972826066c2c8",
+  apiUserUrl:"https://api.github.com/users/brian23-eng?access_token=d5250069c5dd8749aa8f5e2601c0c3b1702f40d9",
 };
 
 /*
