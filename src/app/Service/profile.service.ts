@@ -1,10 +1,10 @@
-import { logging } from 'protractor';
 import { Injectable } from '@angular/core';
 import { HttpClient} from '@angular/common/http';
 
 import { User } from '../Classes/user'
 import { environment } from './../../environments/environment';
 import  'rxjs/add/operator/map'
+import { Repo } from '../Classes/repo';
 
 
 @Injectable({
@@ -12,12 +12,17 @@ import  'rxjs/add/operator/map'
 })
 export class ProfileService {
   user: User; 
+  repo :Repo;
+  private userName: string;
+  apiKey:string = environment.apiKey
 
 
   constructor(private http:HttpClient) {
 
     // this.username = "brian23-eng";
     this.user = new User("","","",0,0);
+
+    this.repo = new Repo('','','')
   }
 
   userInfo(){
