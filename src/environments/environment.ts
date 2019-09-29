@@ -4,6 +4,8 @@
 
 export const environment = {
   production: false,
+  apiUrl:"https://api.github.com/users/",
+  apiKey:'?access_token=1744a1eb2a2c0fb3c3afba62d2f972826066c2c8',
   apiUserUrl:"https://api.github.com/users/brian23-eng?access_token=1744a1eb2a2c0fb3c3afba62d2f972826066c2c8",
 };
 
