@@ -1,3 +1,4 @@
+import { HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -19,7 +20,8 @@ import { UserProfileComponent } from './Profile/user-profile/user-profile.compon
     BrowserModule,
     AppRoutingModule,
     NgProgressModule.forRoot(),
-    NgProgressHttpClientModule
+    NgProgressHttpClientModule,
+    HttpClientModule
   ],
   providers: [ProfileService],
   bootstrap: [AppComponent],
