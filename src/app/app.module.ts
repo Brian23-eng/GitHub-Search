@@ -11,12 +11,14 @@ import { NgProgressModule } from '@ngx-progressbar/core';
 import { NgProgressHttpClientModule } from '@ngx-progressbar/http-client';
 import { UserProfileComponent } from './Profile/user-profile/user-profile.component';
 import { from } from 'rxjs';
+import { AboutComponent } from './about/about.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    UserProfileComponent
+    UserProfileComponent,
+    AboutComponent
   ],
   imports: [
     BrowserModule,

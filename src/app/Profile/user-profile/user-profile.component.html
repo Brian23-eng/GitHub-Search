@@ -4,9 +4,7 @@
         <div class="col-md-6">
             <h3>Input Info</h3>
             <form class="form-group">
-                <input type="search" class="form-control" placeholder="Input your username" [(ngModel)]="username" name="username" (keyup)="getProfile()">
-                <br><br>
-                <button class="btn btn-primary">Search</button>
+                <input type="text" class="form-control" placeholder="Input your username" [(ngModel)]="username" name="username" (keyup)="getProfile()">
             </form>
         </div>
 
@@ -19,7 +17,7 @@
                 <div class="card-body">
                     <div *ngIf="searchUsers">
                         <div>
-                            <img src="{{user.avatar_url}}" alt="profile">
+                            <img src="{{user.avatar_url}}" alt="profile" class="img-circle img-responsive">
                         </div>
                         <br>
                         <div>

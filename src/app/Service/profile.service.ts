@@ -1,10 +1,11 @@
+import { Repo } from './../Classes/repo';
 import { Injectable } from '@angular/core';
 import { HttpClient} from '@angular/common/http';
 
 import { User } from '../Classes/user'
 import { environment } from './../../environments/environment';
 import  'rxjs/add/operator/map'
-import { Repo } from '../Classes/repo';
+
 
 
 @Injectable({
@@ -28,9 +29,10 @@ export class ProfileService {
   userInfo(){
     interface ApiResponse{
       login: string;
-      public_repos: string;
+      public_repos: number;
       avatar_url : any;
       html_url: string;
+      name : string;
       following : number;
       followers : number;
     }
