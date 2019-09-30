@@ -65,7 +65,7 @@ export class ProfileService {
 
   // getting repo info
 
-  getRepos() {
+  getRepos(username:any) {
 
     interface ApiResponse {
       name: string;

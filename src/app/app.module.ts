@@ -1,3 +1,4 @@
+import { AboutComponent } from './about/about.component';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -16,7 +17,8 @@ import { from } from 'rxjs';
 @NgModule({
   declarations: [
     AppComponent,
-    UserProfileComponent
+    UserProfileComponent,
+    AboutComponent
   ],
   imports: [
     BrowserModule,
