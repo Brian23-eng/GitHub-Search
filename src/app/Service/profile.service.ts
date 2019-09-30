@@ -15,7 +15,7 @@ export class ProfileService {
   user: User; 
   repo :Repo;
   private userName: string;
-  apiKey:string = environment.apiKey
+  apiKey:string = '1744a1eb2a2c0fb3c3afba62d2f972826066c2c8'
 
 
   constructor(private http:HttpClient) {
